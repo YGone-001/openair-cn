@@ -63,7 +63,7 @@ check_install_cassandra_software() {
     
     # wget https://download.oracle.com/otn-pub/java/jdk/13.0.2+8/d4173c853231432d94f001e99d882ca7/jdk-13.0.2_linux-x64_bin.deb
     
-    sh -c 'echo "deb http://www.apache.org/dist/cassandra/debian 21x main" > /etc/apt/sources.list.d/cassandra.sources.list'
+    echo "deb http://www.apache.org/dist/cassandra/debian 21x main" | $SUDO  tee -a /etc/apt/sources.list.d/cassandra.sources.list
     wget -q -O - https://www.apache.org/dist/cassandra/KEYS | $SUDO  apt-key add -
     ret=$?;[[ $ret -ne 0 ]] && return $ret
     $SUDO apt-get update
